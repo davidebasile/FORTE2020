@@ -1,0 +1,51 @@
+Machine with Processor Intel(R) Core(TM) i7-8500Y CPU at 1.50\,GHz, 1601\,Mhz, 2~Core(s), 4~Logical Processor(s) with 16\,GB of RAM, running 64-bit Windows~10.
+
+A[] not (OBU_MAIN_SendLocationToRBC.MAexceededFailure)
+Verification/kernel/elapsed time used: 0s / 0s / 0.016s.
+Resident/virtual memory usage peaks: 11,792KB / 38,188KB.
+
+E[<=700;10000](max: TRAIN_ATO.timer)
+Verification/kernel/elapsed time used: 14.515s / 0s / 14.518s.
+Resident/virtual memory usage peaks: 11,804KB / 38,200KB.
+
+Pr[<=500] (<>OBU_MAIN_SendLocationToRBC.MAexceededFailure)
+Verification/kernel/elapsed time used: 39.063s / 0s / 39.124s.
+Resident/virtual memory usage peaks: 9,836KB / 32,856KB.
+
+strategy safe = control : A[] not (OBU_MAIN_SendLocationToRBC.MAexceededFailure)
+Verification/kernel/elapsed time used: 7.031s / 0.078s / 7.167s.
+Resident/virtual memory usage peaks: 278,336KB / 576,888KB.
+
+simulate 50 [<=500] {TRAIN_ATO.loc} under safe
+Verification/kernel/elapsed time used: 0.14s / 0s / 0.147s.
+Resident/virtual memory usage peaks: 278,432KB / 576,984KB.
+
+A[] not (OBU_MAIN_SendLocationToRBC.MAexceededFailure) under safe
+Verification/kernel/elapsed time used: 2.265s / 0s / 2.283s.
+Resident/virtual memory usage peaks: 289,528KB / 599,268KB.
+
+A<> (TRAIN_ATO.DONE) under safe
+Verification/kernel/elapsed time used: 0.047s / 0s / 0.053s.
+Resident/virtual memory usage peaks: 289,528KB / 599,268KB.
+
+Pr[<=500] (<>TRAIN_ATO.DONE) under safe
+Verification/kernel/elapsed time used: 17s / 0s / 17.003s.
+Resident/virtual memory usage peaks: 280,284KB / 580,764KB.
+
+strategy optsafe = minE (TRAIN_ATO.timer) [<=500]: <> (TRAIN_ATO.DONE) under safe
+Verification/kernel/elapsed time used: 0.016s / 0s / 0.015s.
+Resident/virtual memory usage peaks: 280,364KB / 580,844KB.
+
+E[<=700;10000](max: TRAIN_ATO.timer) under safe
+Verification/kernel/elapsed time used: 25.953s / 0s / 25.99s.
+Resident/virtual memory usage peaks: 280,364KB / 580,844KB.
+
+E[<=700;10000](max: TRAIN_ATO.timer) under optsafe
+Verification/kernel/elapsed time used: 34.234s / 0s / 34.241s.
+Resident/virtual memory usage peaks: 280,388KB / 580,868KB.
+
+
+
+
+
+
